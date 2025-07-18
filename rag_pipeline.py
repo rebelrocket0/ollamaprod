@@ -1,6 +1,6 @@
 from langchain_core.globals import set_verbose, set_debug
 from langchain_community.vectorstores import Chroma
-from langchain_ollama import ChatOllama
+from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain.schema.output_parser import StrOutputParser
 from langchain_community.document_loaders import PyPDFLoader
@@ -18,7 +18,7 @@ class ChatPDF:
     retriever = None
     chain = None
 
-    def __init__(self, llm_model: str = "qwen2.5"):
+    def __init__(self, llm_model: str = "gemma3"):
         self.model = ChatOllama(model=llm_model)
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1024, chunk_overlap=100
